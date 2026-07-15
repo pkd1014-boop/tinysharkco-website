@@ -1,7 +1,585 @@
 <!DOCTYPE html>
-<html>
-<head><title>My Website</title></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Topics Staff Handbook — Busy Season Rescue for Cafes &amp; Restaurants</title>
+<meta name="description" content="A stop-gap staff handbook for your worst busy-season problems, written for your crew and emailed to you in 24 hours. For cafes, coffee shops, and restaurants in Colorado mountain towns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#3E4A44;
+    --bg-dark:#28322D;
+    --paper:#EFE8D8;
+    --paper-dim:#E3DBC7;
+    --ink:#232323;
+    --ink-soft:#5B564A;
+    --rush:#B23A2F;
+    --rush-dark:#8E2C23;
+    --caution:#D9A441;
+    --steel:#9CAB9F;
+    --steel-line:#5B685F;
+    --radius:2px;
+    --max:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--paper);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+  }
+  a{color:inherit;}
+  img,svg{display:block;}
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--caution);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    padding:20px 0;
+    border-bottom:1px solid var(--steel-line);
+  }
+  .nav .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .brand{
+    font-family:'Oswald',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--paper);
+  }
+  .brand span{color:var(--caution);}
+  .nav-cta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    letter-spacing:0.03em;
+    color:var(--paper);
+    border:1px solid var(--steel-line);
+    padding:8px 14px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{border-color:var(--caution); color:var(--caution);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 96px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    color:var(--caution);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(32px, 4.4vw, 52px);
+    line-height:1.08;
+    color:var(--paper);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--caution);
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:17px;
+    color:var(--steel);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    display:inline-block;
+    background:var(--rush);
+    color:var(--paper);
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    font-size:15px;
+    padding:16px 26px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    border:1px solid var(--rush-dark);
+  }
+  .btn-primary:hover{background:var(--rush-dark);}
+  .hero-microcopy{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--steel);
+  }
+
+  /* ---------- TICKET ---------- */
+  .ticket-holder{
+    position:relative;
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,0.35));
+  }
+  .ticket{
+    background:var(--paper);
+    color:var(--ink);
+    padding:26px 24px 34px;
+    border-radius:var(--radius);
+    position:relative;
+    transform:rotate(-1.4deg);
+  }
+  .ticket::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-1px; height:14px;
+    background:radial-gradient(circle 7px at 14px 0, var(--bg) 99%, transparent 100%);
+    background-size:28px 14px;
+    background-repeat:repeat-x;
+  }
+  .ticket-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    border-bottom:1.5px dashed var(--ink-soft);
+    padding-bottom:12px;
+    margin-bottom:14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+  }
+  .ticket-title{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .ticket-meta div{color:var(--ink-soft);}
+  .ticket-meta strong{color:var(--ink);}
+  .ticket-list{
+    list-style:none;
+    margin:0 0 16px;
+    padding:0;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+  }
+  .ticket-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:7px 0;
+    border-bottom:1px dotted #C9C0A9;
+  }
+  .ticket-list li:last-child{border-bottom:none;}
+  .box{
+    flex:0 0 14px;
+    height:14px;
+    border:1.5px solid var(--ink);
+    margin-top:2px;
+  }
+  .box.checked{background:var(--rush); border-color:var(--rush-dark);}
+  .ticket-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-top:1.5px dashed var(--ink-soft);
+    padding-top:12px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .ticket-total .label{font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em;}
+  .ticket-total .amount{font-size:22px; font-weight:600;}
+  .stamp{
+    position:absolute;
+    top:14px; right:-10px;
+    border:3px solid var(--rush);
+    color:var(--rush);
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:6px 10px;
+    transform:rotate(9deg);
+    border-radius:4px;
+    background:rgba(178,58,47,0.06);
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{
+    padding:76px 0;
+    border-top:1px solid var(--steel-line);
+  }
+  .section-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    color:var(--caution);
+    margin-bottom:14px;
+  }
+  .section h2{
+    font-size:clamp(24px,3vw,34px);
+    color:var(--paper);
+    max-width:22ch;
+  }
+  .section-sub{
+    color:var(--steel);
+    max-width:56ch;
+    margin-top:14px;
+    font-size:16px;
+  }
+
+  /* ---------- HOT TOPICS RAIL ---------- */
+  .rail{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .stub{
+    background:var(--paper);
+    color:var(--ink);
+    padding:20px 18px 22px;
+    border-radius:var(--radius);
+    position:relative;
+  }
+  .stub::before{
+    content:"";
+    position:absolute;
+    top:-6px; left:20px;
+    width:12px; height:12px;
+    background:var(--bg-dark);
+    border:2px solid var(--steel);
+    border-radius:50%;
+  }
+  .stub .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--rush);
+    margin-bottom:10px;
+  }
+  .stub h3{
+    font-size:16px;
+    text-transform:none;
+    letter-spacing:0;
+    margin-bottom:8px;
+    font-weight:600;
+    font-family:'Inter',sans-serif;
+  }
+  .stub p{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .stub.plus{
+    background:transparent;
+    border:1.5px dashed var(--steel-line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--steel);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+  }
+  .stub.plus::before{display:none;}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .step .step-num{
+    font-family:'Oswald',sans-serif;
+    font-size:13px;
+    color:var(--bg);
+    background:var(--caution);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:28px; height:28px;
+    border-radius:50%;
+    font-weight:700;
+    margin-bottom:16px;
+  }
+  .step h3{
+    font-size:17px;
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    color:var(--paper);
+    margin-bottom:8px;
+  }
+  .step p{
+    color:var(--steel);
+    font-size:14.5px;
+    margin:0;
+  }
+  .steps-connector{
+    grid-column:1/-1;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--steel-line) 0 6px, transparent 6px 12px);
+    margin-top:-16px;
+    display:none;
+  }
+
+  /* ---------- WHO ITS FOR ---------- */
+  .who .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .who-list{
+    list-style:none;
+    padding:0;
+    margin:24px 0 0;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+  }
+  .who-list li{
+    padding:10px 0;
+    border-bottom:1px solid var(--steel-line);
+    display:flex;
+    gap:12px;
+  }
+  .who-list li:last-child{border-bottom:none;}
+  .who-list li::before{
+    content:"—";
+    color:var(--caution);
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final{
+    background:var(--bg-dark);
+    padding:80px 0;
+    text-align:center;
+  }
+  .final h2{
+    font-size:clamp(26px,3.6vw,40px);
+    color:var(--paper);
+    max-width:20ch;
+    margin:0 auto;
+  }
+  .final-sub{
+    color:var(--steel);
+    margin:16px auto 0;
+    max-width:48ch;
+    font-size:16px;
+  }
+  .final .btn-primary{
+    margin-top:30px;
+  }
+  .final .hero-microcopy{
+    margin-top:14px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:32px 0;
+    border-top:1px solid var(--steel-line);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--steel);
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr; gap:48px;}
+    .ticket-holder{max-width:420px; margin:0 auto;}
+    .rail{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr;}
+    .who .wrap{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .rail{grid-template-columns:1fr;}
+    .nav-cta{display:none;}
+  }
+</style>
+</head>
 <body>
-  <h1>Hello, world!</h1>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">Hot Topics <span>Staff Handbook</span></div>
+    <a class="nav-cta" href="#order">Get your handbook</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">COLORADO MOUNTAIN TOWNS · BUSY SEASON RESCUE</div>
+      <h1>The staff handbook for the week <em>everything</em> falls apart.</h1>
+      <p class="hero-sub">One page. The exact rules for your worst busy-season problems — written for your crew, not a lawyer. Tell us what's on fire, and it's in your inbox in 24 hours.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#order">Get your handbook — $257</a>
+      </div>
+      <p class="hero-microcopy">Check out today. Handbook lands in your inbox tomorrow.</p>
+    </div>
+
+    <div class="ticket-holder">
+      <div class="ticket">
+        <div class="stamp">Rush<br>24 HR</div>
+        <div class="ticket-head">
+          <div>
+            <div class="ticket-title">Order Ticket</div>
+            <div class="ticket-meta">
+              <div>Shop: <strong>[Your Cafe Name]</strong></div>
+              <div>Prepared by: <strong>Hot Topics HQ</strong></div>
+            </div>
+          </div>
+          <div class="ticket-meta" style="text-align:right;">
+            <div>No. 0417</div>
+            <div>Season: <strong>Peak</strong></div>
+          </div>
+        </div>
+        <ul class="ticket-list">
+          <li><span class="box checked"></span> Staff eating &amp; drinking the profits</li>
+          <li><span class="box checked"></span> Phones out in front of guests</li>
+          <li><span class="box"></span> Staff snapping at guests / the crowd</li>
+          <li><span class="box"></span> Add your own hot topic</li>
+        </ul>
+        <div class="ticket-total">
+          <span class="label">Total due</span>
+          <span class="amount">$257</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="topics">
+  <div class="wrap">
+    <div class="section-label">Pick what's on fire right now</div>
+    <h2>You don't need a 40-page handbook. You need today's problem handled.</h2>
+    <p class="section-sub">After checkout, you'll fill out a short form and choose the issues hitting your shop hardest this week. Here's what most owners are dealing with:</p>
+
+    <div class="rail">
+      <div class="stub">
+        <div class="num">ITEM 01</div>
+        <h3>The perk problem</h3>
+        <p>Staff meal and drink policy is being treated as an all-you-can-eat buffet. Clear rules, no awkward confrontations.</p>
+      </div>
+      <div class="stub">
+        <div class="num">ITEM 02</div>
+        <h3>Phones on the line</h3>
+        <p>Devices coming out in front of guests during the rush. What's allowed, what isn't, and what happens next time.</p>
+      </div>
+      <div class="stub">
+        <div class="num">ITEM 03</div>
+        <h3>Crowd-frayed nerves</h3>
+        <p>Staff getting short with guests when the line's out the door. Scripts and resets for the worst moments.</p>
+      </div>
+      <div class="stub plus">
+        + Your shop's specific hot topics, picked on the form after checkout
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-label">How it works</div>
+    <h2>Three steps. One day. Done.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Check out</h3>
+        <p>$257, one time. No subscription, no upsell funnel.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Tell us what's on fire</h3>
+        <p>A two-minute form. Pick your top issues from the list, or tell us your own.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>It lands in your inbox</h3>
+        <p>Within 24 hours. Print it, post it in the back, hand it to your crew.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section who">
+  <div class="wrap">
+    <div>
+      <div class="section-label">Built for mountain town service</div>
+      <h2>Made for the shops that live and die by one busy season.</h2>
+      <p class="section-sub">Not a national franchise template. Not generic HR boilerplate. Written for the specific chaos of a small crew getting slammed by a short, brutal peak.</p>
+    </div>
+    <ul class="who-list">
+      <li>Cafes and coffee shops in Colorado resort towns</li>
+      <li>Independent restaurants running lean during peak season</li>
+      <li>Owners who need this fixed today, not "eventually"</li>
+      <li>Teams too small for a full HR department or handbook overhaul</li>
+    </ul>
+  </div>
+</section>
+
+<section class="final" id="order">
+  <div class="wrap">
+    <h2>Stop losing sleep over the same three problems.</h2>
+    <p class="final-sub">Tell us what's breaking down at your shop this week. We'll hand your crew the exact page they need — by tomorrow.</p>
+    <a class="btn-primary" href="mailto:you@yourdomain.com?subject=Hot%20Topics%20Staff%20Handbook%20Order">Get your handbook — $257</a>
+    <p class="hero-microcopy">Checkout today. Handbook in your inbox tomorrow.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Hot Topics Staff Handbook</div>
+    <div>Colorado, USA</div>
+  </div>
+</footer>
+
 </body>
 </html>
